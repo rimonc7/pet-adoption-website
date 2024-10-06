@@ -8,18 +8,157 @@
     <!-- daisyUi cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font cdn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/8952c6182c.js" crossorigin="anonymous"></script>
+    <style>
+        .lato {
+            font-family: "Lato", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
 </head>
 
-<body>
+<body class="lato p-0 m-0 h-full">
     <header>
-
+        <!-- navbar start -->
+        <nav class="lg:mx-20 pt-5">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <div class="flex items-center">
+                        <div>
+                            <img src="images/logo.webp" alt="Logo">
+                        </div>
+                        <a class="pl-3 font-extrabold text-black text-2xl">Peddy</a>
+                    </div>
+                </div>
+                <div class="navbar-center">
+                    <!-- Mobile Dropdown -->
+                    <div class="dropdown lg:hidden">
+                        <label tabindex="0" class="btn btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </label>
+                        <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52">
+                            <li><a>Home</a></li>
+                            <li><a>Shop</a></li>
+                            <li><a>Contact</a></li>
+                        </ul>
+                    </div>
+                    <ul class="menu hidden lg:flex menu-horizontal px-1">
+                        <li><a>Home</a></li>
+                        <li><a>Shop</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <img src="https://img.icons8.com/?size=32&id=15263&format=png" alt="Cart Icon">
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar end -->
+        <!-- banner start -->
+        <section>
+            <div class="hero">
+                <div class="hero-content text-center">
+                    <div class="max-w-3xl">
+                        <p class="text-gray-500 font-bold my-6">Bringing Families Together ❤️‍🔥</p>
+                        <h2 class="text-7xl font-bold text-black">Your Path to Adoption Starts Here</h2>
+                        <p class="py-6">
+                            Find your perfect furry friend and give them a forever home! At Peddy, we make pet
+                            adoption simple, safe, and heartwarming. Whether you’re looking for a playful pup or a
+                            cuddly kitten, we’ve got a loving pet waiting just for you. Start your adoption journey
+                            today and help save a life!
+                        </p>
+                        <button id="view-more-btn" class="btn bg-[#0E7A81] text-white hover:text-black">View
+                            More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <img src="images/pet.webp" alt="">
+            </div>
+        </section>
+        <!-- banner end -->
     </header>
-    <main>
+    <main class="mx-1">
+        <div class="mt-8">
+            <div class="hero">
+                <div class="hero-content text-center">
+                    <div class="max-w-3xl">
+                        <h2 id="scroll-target" class="text-4xl font-bold text-black">Adopt Your Best Friend</h2>
+                        <p class="py-6">
+                            At Peddy, we connect loving families with adorable pets in need of a forever home. Whether
+                            you're searching for a playful puppy, a cuddly kitten, or a gentle companion, our platform
+                            makes pet adoption easy and heartwarming.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Catagories Container start -->
+        <div id="catagory-container" class=" grid grid-cols-1 lg:grid-cols-4 mx-0 lg:mx-24">
+        </div>
+        <!-- Catagories Container End -->
+        <!-- sort btn section start -->
+        <div class="flex justify-between mx-0 lg:mx-24">
+            <h3 class="text-black text-2xl font-bold">Best Deal For you</h3>
+            <button class="btn bg-[#0E7A81] text-white hover:text-black"> Sort By Price</button>
+        </div>
+        <!-- sort btn section end -->
+
 
     </main>
-    <footer>
-
+    <footer class=" flex flex-col lg:flex-row  justify-between align-middle  footer  bg-black text-white p-10 m-0">
+        <nav class="mx-0 lg:mx-10">
+            <div class="flex items-center">
+                <div>
+                    <img src="images/logo.webp" alt="Logo">
+                </div>
+                <a class="pl-3 font-extrabold text-2xl">Peddy</a>
+            </div>
+            <p>
+                Location: av. Washington 165, NY CA <br>54003
+                <br>Phone: +31 85 964 47 25
+                <br>Email: info@yourdomain.com
+                <br>Openings hours: 9.00 AM - 5.00 PM
+            </p>
+            <div class="text-3xl">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </nav>
+        <nav>
+            <h6 class="font-bold text-xl text-white">Useful Links</h6>
+            <a class="link link-hover">Home</a>
+            <a class="link link-hover">About Us</a>
+            <a class="link link-hover">Animals</a>
+            <a class="link link-hover">Foundation</a>
+            <a class="link link-hover">Contact</a>
+        </nav>
+        <form>
+            <h6 class="font-bold text-xl text-white">Drop a Message</h6>
+            <fieldset class="form-control w-20 lg:w-80">
+                <div>
+                    <input type="text" placeholder="Enter Email Address" class="input input-bordered join-item" />
+                    <button class="btn btn-primary join-item mt-4">Subscribe</button>
+                </div>
+            </fieldset>
+        </form>
     </footer>
+    <!-- js script -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
