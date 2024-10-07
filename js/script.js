@@ -56,7 +56,7 @@ const showPets = (pets) => {
                             <p> <i class="fa-solid fa-dollar-sign"></i> Price : ${pet.price}$</p>
                             <hr class="my-2">
                             <div class="flex justify-between align-middle">
-                                <button class="btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">
+                                <button class="thumb-up-btn btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">
                                     <i class="fa-regular fa-thumbs-up text-xl px-3"></i>
                                 </button>
                                 <button
@@ -69,8 +69,20 @@ const showPets = (pets) => {
                         </div>
                     </div>`
         petContainer.append(div)
+        const thumbUpBtn = div.querySelector('.thumb-up-btn');
+        thumbUpBtn.addEventListener('click', function () {
+            const sideBar = document.getElementById("sidebar");
+            const div = document.createElement('div');
+            div.innerHTML=`<img class="rounded-lg" src="${pet.image}" alt="" />`
+            sideBar.append(div)
+        });
     })
 }
+
+
+
+
+
 
 loadPets();
 
