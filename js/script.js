@@ -7,6 +7,8 @@ document.getElementById('view-more-btn').addEventListener('click', function () {
 
 })
 
+// catagory button function
+
 const catagoriesLoader = () => {
     fetch('https://openapi.programming-hero.com/api/peddy/categories')
         .then(res => res.json())
@@ -18,17 +20,42 @@ const showCatagories = (catagories) => {
     const catagoryContainer = document.getElementById('catagory-container')
     catagories.forEach(catagory => {
         const button = document.createElement('button')
-        button.classList = ('btn btn-outline border-emerald-500 m-4 px-10  text-black font-bold text-2xl')
+        button.classList = (' btn btn-outline border-emerald-500 m-4 px-10  text-black font-bold text-2xl')
         button.innerHTML = `<img src="${catagory.category_icon}" alt=" " class="inline-block w-8 h-8 mr-2">
     ${catagory.category}`
         catagoryContainer.append(button)
+
+        // button clicked handler
+        button.addEventListener('click', function () {
+            const petName = `${catagory.category}`
+            FetchPetsbyCategory(petName)
+        })
     })
 
 }
 
-catagoriesLoader();
+// Fetch Pets by Category Function
+
+const FetchPetsbyCategory = (petCommonName) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${petCommonName}`)
+        .then(res => res.json())
+        .then(data => {
+            const petContainer = document.getElementById('pet-container');
+            petContainer.innerHTML = '';
+            data.data.length === 0? petContainer.innerHTML = ` 
+        <div class = "w-[1250px]">
+            <div  class="max-w-3xl bg-slate-100 rounded-xl mb-4 text-center mx-auto">
+            <img class="mx-auto pt-24" src="images/error.webp" alt="">
+            <h2 class="text-black font-bold text-4xl py-3">No Information Available</h2>
+            <p class="text-gray-600 pb-24">We couldn't find any pets in this category. Try selecting a different category or come back later.</p>
+         </div>
+            </div>`:showPets(data.data)
+        })
+        .catch(error => console.log(error))
+}
 
 
+// All pets Load Function
 
 const loadPets = () => {
     fetch('https://openapi.programming-hero.com/api/peddy/pets')
@@ -73,7 +100,7 @@ const showPets = (pets) => {
         thumbUpBtn.addEventListener('click', function () {
             const sideBar = document.getElementById("sidebar");
             const div = document.createElement('div');
-            div.innerHTML=`<img class="rounded-lg" src="${pet.image}" alt="" />`
+            div.innerHTML = `<img class="rounded-lg" src="${pet.image}" alt="" />`
             sideBar.append(div)
         });
     })
@@ -83,25 +110,5 @@ const showPets = (pets) => {
 
 
 
-
+catagoriesLoader();
 loadPets();
-
-
-
-
-
-
-
-
-// {
-//     "petId": 2,
-//     "breed": "Siamese",
-//     "category": "Cat",
-//     "date_of_birth": "2022-09-05",
-//     "price": 800,
-//     "image": "https://i.ibb.co.com/3Wzz41D/pet-2.jpg",
-//     "gender": "Female",
-//     "pet_details": "This affectionate female Siamese cat is known for her vocal nature and love for attention. Born on September 5, 2022, she enjoys interactive play and snuggles. Fully vaccinated and priced at $800, she's the perfect fit for cat lovers who appreciate an intelligent, engaging, and sociable feline companion.",
-//     "vaccinated_status": "Fully",
-//     "pet_name": "Mia"
-// }
