@@ -90,7 +90,7 @@ const showPets = (pets) => {
     pets.forEach(pet => {
         const div = document.createElement('div')
         div.classList = ('grid grid')
-        div.innerHTML = ` <div class="card border-2 border-[5A5A5A] ">
+        div.innerHTML = ` <div class=" allPets card border-2 border-[5A5A5A] ">
                         <figure class="p-3 ">
                             <img class="rounded-lg"
                                 src="${pet.image}"
@@ -98,8 +98,8 @@ const showPets = (pets) => {
                         </figure>
                         <div class="p-3">
                             <h2 class="card-title">${pet.pet_name}</h2>
-                            <p> <i class="fa-solid fa-paw"></i> Breed: ${pet.breed? pet.breed:"Update Soon"}</p>
-                            <p><i class="fa-solid fa-calendar-days"></i> Birth: ${pet.date_of_birth ? pet.date_of_birth:"Update Soon" }</p>
+                            <p> <i class="fa-solid fa-paw"></i> Breed: ${pet.breed ? pet.breed : "Update Soon"}</p>
+                            <p><i class="fa-solid fa-calendar-days"></i> Birth: ${pet.date_of_birth ? pet.date_of_birth : "Update Soon"}</p>
                             <p> <i class="fa-solid fa-mercury"></i> Gender: ${pet.gender}</p>
                             <p> <i class="fa-solid fa-dollar-sign"></i> Price : ${pet.price}$</p>
                             <hr class="my-2">
@@ -125,17 +125,25 @@ const showPets = (pets) => {
             sideBar.append(div)
         });
 
-        // const adoptedButton = div.querySelector('.adopted-button');
-        // adoptedButton.addEventListener('click', function () {
-        //     countDown()
-        // })
+        const adoptedButton = div.querySelector('.adopted-button');
+        adoptedButton.addEventListener('click', function () {
+            countDown()
+        })
         const detailsButton = div.querySelector('.details-btn');
         detailsButton.addEventListener('click', function () {
             detailModal(pet.petId);
         })
 
+        // const sortButton = document.getElementById('sort-btn');
+        // sortButton.addEventListener('click', function () {
+        //     const allPets = document.getElementsByClassName('allPets')
+        //     let sortedPets = allPets.sort((a, b) => b.price - a.price)
+        //     showPets(sortedPets)
+        // })
     })
 }
+
+
 
 const detailModal = (id) => {
 
@@ -177,9 +185,31 @@ const detailModal = (id) => {
 }
 // countdown function
 
-// const countDown = () => {
-//     my_modal_1.showModal()
+const countDown = () => {
+    const modalContainer = document.getElementById('my_modal_1')
+    modalContainer.innerHTML = '';
+    const div = document.createElement('div');
+    div.innerHTML = `<div class="modal-box">
+            <div class = "text-center"> <i class="fa-regular fa-handshake text-5xl p-3 text-[#0E7A81]"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-[#0E7A81] text-center mx-6">Congratulations</h1>
+            <progress class="progress"></progress>
+        </div>`
+    modalContainer.append(div);
+    my_modal_1.showModal()
+}
+
+
+// sort function
+
+
+
+// const sortDecending = () => {
+
+//     pets.sort((a, b) => b.price - a.price);
 // }
+
+
 
 
 catagoriesLoader();
