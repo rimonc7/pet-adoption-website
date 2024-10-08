@@ -22,13 +22,17 @@
             font-weight: 400;
             font-style: normal;
         }
+
+        .active-btn {
+            background-color: #0E7A81;
+        }
     </style>
 </head>
 
 <body class="lato p-0 m-0 h-full">
     <header>
         <!-- navbar start -->
-        <nav class="lg:mx-20 pt-5">
+        <nav class="lg:mx-20 pt-5 md:mx-14">
             <div class="navbar bg-base-100">
                 <div class="navbar-start">
                     <div class="flex items-center">
@@ -40,7 +44,7 @@
                 </div>
                 <div class="navbar-center">
                     <!-- Mobile Dropdown -->
-                    <div class="dropdown lg:hidden">
+                    <div class="dropdown md:hidden lg:hidden">
                         <label tabindex="0" class="btn btn-ghost">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -54,7 +58,7 @@
                             <li><a>Contact</a></li>
                         </ul>
                     </div>
-                    <ul class="menu hidden lg:flex menu-horizontal px-1">
+                    <ul class="menu hidden md:flex lg:flex menu-horizontal px-1">
                         <li><a>Home</a></li>
                         <li><a>Shop</a></li>
                         <li><a>Contact</a></li>
@@ -70,7 +74,7 @@
         <section>
             <div class="hero">
                 <div class="hero-content text-center">
-                    <div class="max-w-3xl">
+                    <div class="max-w-3xl md:mx-8">
                         <p class="text-gray-500 font-bold my-6">Bringing Families Together ❤️‍🔥</p>
                         <h2 class="text-7xl font-bold text-black">Your Path to Adoption Starts Here</h2>
                         <p class="py-6">
@@ -90,7 +94,7 @@
         </section>
         <!-- banner end -->
     </header>
-    <main class="mx-1">
+    <main class="mx-1 md:mx-14">
         <div class="mt-8">
             <div class="hero">
                 <div class="hero-content text-center">
@@ -106,31 +110,34 @@
             </div>
         </div>
         <!-- Catagories Container start -->
-        <div id="catagory-container" class=" grid grid-cols-1 lg:grid-cols-4 mx-0 lg:mx-24">
+        <div id="catagory-container"
+            class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto lg:mx-24 text-center">
         </div>
         <!-- Catagories Container End -->
         <!-- sort btn section start -->
-        <div class="flex justify-between mx-0 lg:mx-24 my-4">
-            <h3 class="text-black text-2xl font-bold">Best Deal For you</h3>
+        <div class="flex flex-col lg:flex-row justify-between mx-8 lg:mx-24 md:mx-14 my-4 lg:my-8">
+            <h3 class="text-black text-2xl font-bold my-6 lg:my-0 text-center">Best Deal For you</h3>
             <button class="btn bg-[#0E7A81] text-white hover:text-black"> Sort By Price</button>
         </div>
         <!-- sort btn section end -->
         <!-- pet section start -->
-
-        <div class="container mx-auto p-4 w-11/12">
+        <div id="pet-sidebar-container" class="container mx-auto p-4 w-11/12">
             <div class="flex flex-col lg:flex-row">
                 <div id="pet-container"
                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full lg:max-w-5xl">
-
                 </div>
                 <!-- Sidebar right side -->
-                <aside class=" h-full w-full lg:max-w-72 lg:ml-8 mt-8 lg:mt-0 border-2 border-[5A5A5A]  rounded-xl">
-                    <div id="sidebar" class="bg-white p-4 rounded-lg shadow-md grid grid-cols-2 gap-2">
+                <aside class=" w-full lg:max-w-72 lg:ml-8 mt-8 lg:mt-0 border-2 border-[5A5A5A]  rounded-xl">
+                    <div id="sidebar" class="bg-white p-4 rounded-lg grid grid-cols-2 gap-2">
                     </div>
                 </aside>
             </div>
         </div>
         <!-- pet section start -->
+        <!-- Details modal section -->
+            <dialog id="my_modal_1" class="modal">
+
+            </dialog>
     </main>
     <footer class=" flex flex-col lg:flex-row  justify-between align-middle  footer  bg-black text-white p-10 m-0 w">
         <nav class="mx-0 lg:mx-10">
