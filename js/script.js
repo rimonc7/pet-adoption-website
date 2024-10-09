@@ -36,6 +36,8 @@ const showCatagories = (catagories) => {
 
 }
 
+// Spinner Function
+
 const showSpinner = () => {
     const petContainer = document.getElementById('pet-container');
     petContainer.classList.remove('grid')
@@ -44,6 +46,8 @@ const showSpinner = () => {
 <span class="loading loading-spinner loading-md"></span>
 <span class="loading loading-spinner loading-lg"></span></div>`
 }
+
+
 // Fetch Pets by Category Function
 
 const FetchPetsbyCategory = (petCommonName) => {
@@ -68,6 +72,9 @@ const FetchPetsbyCategory = (petCommonName) => {
         .catch(error => console.log(error))
 }
 
+
+// Catagory Button Style Change
+
 const removeAllButtonStyle = () => {
     const allButton = document.getElementsByClassName('all-pet-button');
     for (let btn of allButton) {
@@ -78,15 +85,21 @@ const removeAllButtonStyle = () => {
 
 // All pets Load Function
 
+let allPets = "";
+
 const loadPets = () => {
     fetch('https://openapi.programming-hero.com/api/peddy/pets')
         .then(res => res.json())
-        .then(data => showPets(data.pets))
+        .then(data => {
+            allPets = data.pets;
+            showPets(allPets)
+        })
         .catch(error => console.log(error))
 }
 
 const showPets = (pets) => {
     const petContainer = document.getElementById('pet-container');
+    petContainer.innerHTML = ""
     pets.forEach(pet => {
         const div = document.createElement('div')
         div.classList = ('grid grid')
@@ -143,15 +156,11 @@ const showPets = (pets) => {
         detailsButton.addEventListener('click', function () {
             detailModal(pet.petId);
         })
-
-        // const sortButton = document.getElementById('sort-btn');
-        // sortButton.addEventListener('click', function () {
-        //     const allPets = document.getElementsByClassName('allPets')
-        //     let sortedPets = allPets.sort((a, b) => b.price - a.price)
-        //     showPets(sortedPets)
-        // })
     })
 }
+
+
+// countdown function
 
 const countDown = () => {
     let countdown = 3;
@@ -177,9 +186,9 @@ const countDown = () => {
 
 }
 
+// deatails Show on Modal Function
 
 const detailModal = (id) => {
-
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
         .then(res => res.json())
         .then(data => {
@@ -217,24 +226,18 @@ const detailModal = (id) => {
         .catch(error => console.log(error))
 }
 
+// Sorted By price function
 
-// countdown function
-
-// const closeModal = () => {
-//     const modalContainer = document.getElementById('my_modal_1');
-//     modalContainer.close();
-// }
-
-// sort function
-
-
-
-// const sortDecending = () => {
-
-//     pets.sort((a, b) => b.price - a.price);
-// }
-
-
+const sortButton = document.getElementById('sort-btn');
+sortButton.addEventListener('click', function () {
+    const sortedPets = allPets.sort((a, b) => b.price - a.price);
+    showSpinner()
+    setTimeout(() => {
+        const petContainer = document.getElementById('pet-container');
+        petContainer.classList.add('grid')
+        showPets(sortedPets);
+    }, 2000);
+})
 
 
 catagoriesLoader();
