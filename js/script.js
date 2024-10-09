@@ -108,7 +108,7 @@ const showPets = (pets) => {
                                     <i class="fa-regular fa-thumbs-up text-xl px-3"></i>
                                 </button>
                                 <button
-                                    class="adopted-button btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Adopt
+                                   id="pet-${pet.petId}" class="adopted-button btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Adopt
                                 </button>
                                 <button
                                     class="details-btn btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Details
@@ -128,7 +128,17 @@ const showPets = (pets) => {
         const adoptedButton = div.querySelector('.adopted-button');
         adoptedButton.addEventListener('click', function () {
             countDown()
-        })
+            setTimeout(() => {
+                const adoptBtnById = document.getElementById(`pet-${pet.petId}`)
+                adoptBtnById.innerHTML = ""
+                adoptBtnById.innerHTML = `<button
+                                       id=" class="btn text-white disabled">Adopted
+                                    </button>`
+                adoptBtnById.disabled = true;
+
+            }, 4000)
+        });
+
         const detailsButton = div.querySelector('.details-btn');
         detailsButton.addEventListener('click', function () {
             detailModal(pet.petId);
@@ -143,6 +153,29 @@ const showPets = (pets) => {
     })
 }
 
+const countDown = () => {
+    let countdown = 3;
+    const countdownInterval = setInterval(() => {
+        const modalContainer = document.getElementById('my_modal_1')
+        modalContainer.innerHTML = '';
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="modal-box">
+                <div class = "text-center"> <i class="fa-regular fa-handshake text-5xl p-3 text-[#0E7A81]"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-[#0E7A81] text-center mx-6 mb-4">Congratulations</h1>
+                <p class="text-2xl font-bold text-[#0E7A81] text-center ">${countdown}</p>
+            </div>`
+        modalContainer.append(div);
+        my_modal_1.showModal()
+        countdown--;
+
+        if (countdown < 0) {
+            clearInterval(countdownInterval);
+            modalContainer.close()
+        }
+    }, 1000);
+
+}
 
 
 const detailModal = (id) => {
@@ -183,22 +216,14 @@ const detailModal = (id) => {
         })
         .catch(error => console.log(error))
 }
+
+
 // countdown function
 
-const countDown = () => {
-    const modalContainer = document.getElementById('my_modal_1')
-    modalContainer.innerHTML = '';
-    const div = document.createElement('div');
-    div.innerHTML = `<div class="modal-box">
-            <div class = "text-center"> <i class="fa-regular fa-handshake text-5xl p-3 text-[#0E7A81]"></i>
-            </div>
-            <h1 class="text-3xl font-bold text-[#0E7A81] text-center mx-6">Congratulations</h1>
-            <progress class="progress"></progress>
-        </div>`
-    modalContainer.append(div);
-    my_modal_1.showModal()
-}
-
+// const closeModal = () => {
+//     const modalContainer = document.getElementById('my_modal_1');
+//     modalContainer.close();
+// }
 
 // sort function
 
@@ -214,4 +239,8 @@ const countDown = () => {
 
 catagoriesLoader();
 loadPets();
+
+
+
+
 
