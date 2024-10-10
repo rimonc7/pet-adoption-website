@@ -159,34 +159,7 @@ const showPets = (pets) => {
     })
 }
 
-
-// countdown function
-
-const countDown = () => {
-    let countdown = 3;
-    const countdownInterval = setInterval(() => {
-        const modalContainer = document.getElementById('my_modal_1')
-        modalContainer.innerHTML = '';
-        const div = document.createElement('div');
-        div.innerHTML = `<div class="modal-box">
-                <div class = "text-center"> <i class="fa-regular fa-handshake text-5xl p-3 text-[#0E7A81]"></i>
-                </div>
-                <h1 class="text-3xl font-bold text-[#0E7A81] text-center mx-6 mb-4">Congratulations</h1>
-                <p class="text-2xl font-bold text-[#0E7A81] text-center ">${countdown}</p>
-            </div>`
-        modalContainer.append(div);
-        my_modal_1.showModal()
-        countdown--;
-
-        if (countdown < 0) {
-            clearInterval(countdownInterval);
-            modalContainer.close()
-        }
-    }, 1000);
-
-}
-
-// deatails Show on Modal Function
+// details Show on Modal Function
 
 const detailModal = (id) => {
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
@@ -195,7 +168,7 @@ const detailModal = (id) => {
             const modalContainer = document.getElementById('my_modal_1')
             modalContainer.innerHTML = '';
             const div = document.createElement('div');
-            div.innerHTML = `<div class="modal-box w-3/4 max-w-4xl">
+            div.innerHTML = `<div class="modal-box w-[90%] max-w-lg md:max-w-3xl mx-auto">
                     <div>
                     <img class="rounded-xl w-full h-full" src="${data.petData.image}" alt="">
                     </div>
@@ -239,6 +212,32 @@ sortButton.addEventListener('click', function () {
     }, 2000);
 })
 
+
+// countdown function
+
+const countDown = () => {
+    let countdown = 3;
+    const countdownInterval = setInterval(() => {
+        const modalContainer = document.getElementById('my_modal_1')
+        modalContainer.innerHTML = '';
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="modal-box">
+                <div class = "text-center"> <i class="fa-regular fa-handshake text-5xl p-3 text-[#0E7A81]"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-[#0E7A81] text-center mx-6 mb-4">Congratulations</h1>
+                <p class="text-2xl font-bold text-[#0E7A81] text-center ">${countdown}</p>
+            </div>`
+        modalContainer.append(div);
+        my_modal_1.showModal()
+        countdown--;
+
+        if (countdown < 0) {
+            clearInterval(countdownInterval);
+            modalContainer.close()
+        }
+    }, 1000);
+
+}
 
 catagoriesLoader();
 loadPets();
