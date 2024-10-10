@@ -54,6 +54,7 @@ const FetchPetsbyCategory = (petCommonName) => {
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${petCommonName}`)
         .then(res => res.json())
         .then(data => {
+            allPets = data.data;
             const petContainer = document.getElementById('pet-container');
             petContainer.innerHTML = '';
             petContainer.classList.add('grid')
