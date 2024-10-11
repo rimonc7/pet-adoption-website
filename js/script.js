@@ -141,16 +141,14 @@ const showPets = (pets) => {
 
         const adoptedButton = div.querySelector('.adopted-button');
         adoptedButton.addEventListener('click', function () {
-            countDown()
+            countDown();
             setTimeout(() => {
-                const adoptBtnById = document.getElementById(`pet - ${pet.petId} `)
-                adoptBtnById.innerHTML = ""
-                adoptBtnById.innerHTML = `< button
-id = " class="btn text - white disabled">Adopted
-                                    </button > `
+                const adoptBtnById = document.getElementById(`pet-${pet.petId}`);
+                adoptBtnById.innerHTML = "";
+                adoptBtnById.innerHTML = `<button class="adopted-button text-[#0E7A81]">Adopted</button>`;
+                adoptBtnById.classList.add('disabled')
                 adoptBtnById.disabled = true;
-
-            }, 4000)
+            }, 4000);
         });
 
         const detailsButton = div.querySelector('.details-btn');
