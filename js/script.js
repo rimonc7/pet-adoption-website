@@ -114,28 +114,28 @@ const showPets = (pets) => {
                             <h2 class="card-title">${pet.pet_name}</h2>
                             <p> <i class="fa-solid fa-paw"></i> Breed: ${pet.breed ? pet.breed : "Update Soon"}</p>
                             <p><i class="fa-solid fa-calendar-days"></i> Birth: ${pet.date_of_birth ? pet.date_of_birth : "Update Soon"}</p>
-                            <p> <i class="fa-solid fa-mercury"></i> Gender: ${pet.gender}</p>
-                            <p> <i class="fa-solid fa-dollar-sign"></i> Price : ${pet.price}$</p>
-                            <hr class="my-2">
-                            <div class="flex justify-between align-middle">
-                                <button class="thumb-up-btn btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">
-                                    <i class="fa-regular fa-thumbs-up text-xl px-3"></i>
-                                </button>
-                                <button
-                                   id="pet-${pet.petId}" class="adopted-button btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Adopt
-                                </button>
-                                <button
-                                    class="details-btn btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Details
-                                </button>
-                            </div>
-                        </div>
-                    </div>`
+                            <p> <i class="fa-solid fa-mercury"></i> Gender: ${pet.gender ? pet.gender :"Update Soon"}</p>
+                            <p> <i class="fa-solid fa-dollar-sign"></i> Price : ${pet.price ? pet.price +"$" : "Update Soon"} </p >
+    <hr class="my-2">
+        <div class="flex justify-between align-middle">
+            <button class="thumb-up-btn btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">
+                <i class="fa-regular fa-thumbs-up text-xl px-3"></i>
+            </button>
+            <button
+                id="pet-${pet.petId}" class="adopted-button btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Adopt
+            </button>
+            <button
+                class="details-btn btn btn-outline text-[#0E7A81] border-[#5A5A5A] hover:border-[#5A5A5A]">Details
+            </button>
+        </div>
+    </div>
+                    </div > `
         petContainer.append(div)
         const thumbUpBtn = div.querySelector('.thumb-up-btn');
         thumbUpBtn.addEventListener('click', function () {
             const sideBar = document.getElementById("sidebar");
             const div = document.createElement('div');
-            div.innerHTML = `<img class="rounded-lg" src="${pet.image}" alt="" />`
+            div.innerHTML = `< img class="rounded-lg" src = "${pet.image}" alt = "" /> `
             sideBar.append(div)
         });
 
@@ -143,11 +143,11 @@ const showPets = (pets) => {
         adoptedButton.addEventListener('click', function () {
             countDown()
             setTimeout(() => {
-                const adoptBtnById = document.getElementById(`pet-${pet.petId}`)
+                const adoptBtnById = document.getElementById(`pet - ${ pet.petId } `)
                 adoptBtnById.innerHTML = ""
-                adoptBtnById.innerHTML = `<button
-                                       id=" class="btn text-white disabled">Adopted
-                                    </button>`
+                adoptBtnById.innerHTML = `< button
+id = " class="btn text - white disabled">Adopted
+                                    </button > `
                 adoptBtnById.disabled = true;
 
             }, 4000)
@@ -165,11 +165,11 @@ const showPets = (pets) => {
 const detailModal = (id) => {
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
         .then(res => res.json())
-        .then(data => {
-            const modalContainer = document.getElementById('my_modal_1')
-            modalContainer.innerHTML = '';
-            const div = document.createElement('div');
-            div.innerHTML = `<div class="modal-box w-[90%] max-w-lg md:max-w-3xl mx-auto">
+    .then(data => {
+        const modalContainer = document.getElementById('my_modal_1')
+        modalContainer.innerHTML = '';
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="modal-box w-[90%] max-w-lg md:max-w-3xl mx-auto">
                     <div>
                     <img class="rounded-xl w-full h-full" src="${data.petData.image}" alt="">
                     </div>
@@ -194,10 +194,10 @@ const detailModal = (id) => {
                         </form>
                     </div>
                 </div>`
-            modalContainer.append(div);
-            my_modal_1.showModal()
-        })
-        .catch(error => console.log(error))
+        modalContainer.append(div);
+        my_modal_1.showModal()
+    })
+    .catch(error => console.log(error))
 }
 
 // Sorted By price function
